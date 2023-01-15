@@ -1,5 +1,5 @@
-import UIKit
 import SwiftUI
+import UIKit
 
 // SwiftUI template with fallback to support iOS 13
 // https://stackoverflow.com/questions/69703928/how-to-generate-ios-13-swiftui-project-in-xcode
@@ -7,15 +7,11 @@ import SwiftUI
 @main
 struct MainApp {
     static func main() {
-        if #available(iOS 14.0, *) {
-            MyView.main()
-        } else {
             UIApplicationMain(
                 CommandLine.argc,
                 CommandLine.unsafeArgv,
                 nil,
                 NSStringFromClass(AppDelegate.self))
-        }
     }
 }
 
@@ -24,9 +20,9 @@ struct MyView: App {
     var body: some Scene {
         WindowGroup {
             ContentView().onDisappear {
-            #if os(macOS)
-                exit(0)
-            #endif
+                #if os(macOS)
+                    exit(0)
+                #endif
             }
         }
     }
@@ -45,14 +41,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
-
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        let contentView = ContentView() // Add another view with content Text("From iOS 13") to test both block runs
+        let contentView = ContentView()
 
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
@@ -71,11 +64,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
-       //
+        //
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
-       //
+        //
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
