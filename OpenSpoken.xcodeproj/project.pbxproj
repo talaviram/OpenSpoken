@@ -15,6 +15,7 @@
 		3666B65929708D89009C9A30 /* SpeechCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3666B65529708D89009C9A30 /* SpeechCore.swift */; };
 		3666B65C29719CA8009C9A30 /* ProgressView_Polyfill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3666B65B29719CA8009C9A30 /* ProgressView_Polyfill.swift */; };
 		3666B6782971A103009C9A30 /* MyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3666B6772971A103009C9A30 /* MyApp.swift */; };
+		3697E484297545C200EE042B /* ScrollViewProxy in Frameworks */ = {isa = PBXBuildFile; productRef = 3697E483297545C200EE042B /* ScrollViewProxy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3697E484297545C200EE042B /* ScrollViewProxy in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +99,9 @@
 			dependencies = (
 			);
 			name = OpenSpoken;
+			packageProductDependencies = (
+				3697E483297545C200EE042B /* ScrollViewProxy */,
+			);
 			productName = OpenSpoken;
 			productReference = 3666B64029708D04009C9A30 /* OpenSpoken.app */;
 			productType = "com.apple.product-type.application";
@@ -126,6 +131,9 @@
 				Base,
 			);
 			mainGroup = 3666B63729708D04009C9A30;
+			packageReferences = (
+				3697E482297545C200EE042B /* XCRemoteSwiftPackageReference "ScrollViewProxy" */,
+			);
 			productRefGroup = 3666B64129708D04009C9A30 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -387,6 +395,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3697E482297545C200EE042B /* XCRemoteSwiftPackageReference "ScrollViewProxy" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Amzd/ScrollViewProxy";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3697E483297545C200EE042B /* ScrollViewProxy */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3697E482297545C200EE042B /* XCRemoteSwiftPackageReference "ScrollViewProxy" */;
+			productName = ScrollViewProxy;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3666B63829708D04009C9A30 /* Project object */;
 }

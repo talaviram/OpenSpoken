@@ -1,3 +1,4 @@
+import ScrollViewProxy
 import SwiftUI
 
 struct ContentView: View {
@@ -5,13 +6,25 @@ struct ContentView: View {
     @ObservedObject var transcriber = SpeechCore()
     @State private var result = 0
 
+    @State var shouldScroll = false
+
     var body: some View {
         VStack(spacing: 0) {
-            ScrollView {
-                Text(transcriber.transcribedText)
-                    .font(.system(size: settings.fontSize))
-                    .frame(maxWidth: .infinity, alignment: .leading).environment(\.layoutDirection, settings.layoutDirection)
-                    .truncationMode(.middle)
+            GeometryReader { scrollGeometry in
+                ScrollView {
+                    proxy in
+                    Text(transcriber.transcribedText)
+                        .font(.system(size: settings.fontSize))
+                        .frame(maxWidth: .infinity, alignment: .leading).environment(\.layoutDirection, settings.layoutDirection)
+                        .background(GeometryReader { (textGeometry: GeometryProxy) in
+                            HStack {}
+                                .onReceive(transcriber.transcribedText.publisher.first(), perform: { _ in
+                                    if textGeometry.size.height > scrollGeometry.size.height {
+                                        proxy.scrollTo(.bottom)
+                                    }
+                                })
+                        })
+                }
             }
             Text(transcriber.error ?? "").font(.system(size: 25)).foregroundColor(.red)
                 .fixedSize(horizontal: false, vertical: true)
@@ -32,8 +45,7 @@ struct ContentView: View {
                         Spacer()
                         if #available(iOS 14.0, *) {
                             ProgressView()
-                        }
-                        else {
+                        } else {
                             ProgressViewPolyfill()
                         }
                     }

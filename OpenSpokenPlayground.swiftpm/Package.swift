@@ -37,9 +37,15 @@ let package = Package(
             appCategory: .utilities
         )
     ],
+    dependencies: [
+        .package(url: "https://github.com/Amzd/ScrollViewProxy", .branch("master"))
+    ],
     targets: [
         .executableTarget(
             name: "AppModule",
+            dependencies: [
+                .product(name: "ScrollViewProxy", package: "scrollviewproxy")
+            ],
             path: "."
         )
     ]
