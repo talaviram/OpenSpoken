@@ -52,7 +52,7 @@ struct ContentView: View {
                 } else {
                     Button(action: { transcriber.restart() }, label: {
                         Image(systemName: "mic.fill")
-                    })
+                    }).disabled(transcriber.error != nil)
                     .padding()
                 }
                 Spacer()
