@@ -103,6 +103,7 @@ private func getLocaleString(_ locale: Locale) -> String {
 
 struct LanguageView: View {
     let onLanguageSelected: (_ language: String?) -> Void
+    let onDismiss: () -> Void
     @State var selectedLanguage: String
     private let supportedLocale = SFSpeechRecognizer.supportedLocales()
     var body: some View {
@@ -133,6 +134,14 @@ struct LanguageView: View {
                     Toggle("On-Device Only", isOn: Settings.$instance.offlineTranscribe)
                 }
             }
+            .navigationBarItems(leading: Button(action: {
+                self.onDismiss()
+            }) {
+                HStack {
+                    Image(systemName: "chevron.backward")
+                    Text("Cancel")
+                }
+            })
         }
     }
 }
@@ -151,7 +160,7 @@ struct LanguageMenu: View {
 
     var body: some View {
         Button(Settings.instance.currentLanguageAsText(), action: { isVisible = true }).sheet(isPresented: $isVisible) {
-            LanguageView(onLanguageSelected: onSelected, selectedLanguage: Settings.instance.transcribeLanguage)
+            LanguageView(onLanguageSelected: onSelected, onDismiss: { self.isVisible = false }, selectedLanguage: Settings.instance.transcribeLanguage)
         }
     }
 }
