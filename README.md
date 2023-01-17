@@ -8,6 +8,10 @@
 <h4 align="center">Live transcription of audio from microphone for iOS/iPadOS and macOS</h4>
 <br>
 
+<h2 align="center">
+<a href="https://apple.co/3HcJ4Cg"><img src="https://raw.githubusercontent.com/talaviram/OpenSpoken/main/Media/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" alt="Download on the App Store" width="20%"></img></a>
+</h2>
+
 ## Description
 
 I've made this app since due to personal need of a family member with hearing problems.
