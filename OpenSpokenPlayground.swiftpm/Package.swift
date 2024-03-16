@@ -38,13 +38,15 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/Amzd/ScrollViewProxy", .branch("master"))
+        .package(url: "https://github.com/Amzd/ScrollViewProxy", .branch("master")),
+        .package(url: "https://github.com/siteline/SwiftUI-Introspect.git", .exact("0.1.4"))
     ],
     targets: [
         .executableTarget(
             name: "AppModule",
             dependencies: [
-                .product(name: "ScrollViewProxy", package: "scrollviewproxy")
+                .product(name: "ScrollViewProxy", package: "scrollviewproxy"),
+                .product(name: "Introspect", package: "swiftui-introspect")
             ],
             path: "."
         )

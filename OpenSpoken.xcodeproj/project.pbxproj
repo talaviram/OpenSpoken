@@ -16,6 +16,7 @@
 		3666B65C29719CA8009C9A30 /* ProgressView_Polyfill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3666B65B29719CA8009C9A30 /* ProgressView_Polyfill.swift */; };
 		3666B6782971A103009C9A30 /* MyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3666B6772971A103009C9A30 /* MyApp.swift */; };
 		3697E484297545C200EE042B /* ScrollViewProxy in Frameworks */ = {isa = PBXBuildFile; productRef = 3697E483297545C200EE042B /* ScrollViewProxy */; };
+		36F44FDD2BA6035500A6075C /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 36F44FDC2BA6035500A6075C /* Introspect */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3697E484297545C200EE042B /* ScrollViewProxy in Frameworks */,
+				36F44FDD2BA6035500A6075C /* Introspect in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,6 +103,7 @@
 			name = OpenSpoken;
 			packageProductDependencies = (
 				3697E483297545C200EE042B /* ScrollViewProxy */,
+				36F44FDC2BA6035500A6075C /* Introspect */,
 			);
 			productName = OpenSpoken;
 			productReference = 3666B64029708D04009C9A30 /* OpenSpoken.app */;
@@ -133,6 +136,7 @@
 			mainGroup = 3666B63729708D04009C9A30;
 			packageReferences = (
 				3697E482297545C200EE042B /* XCRemoteSwiftPackageReference "ScrollViewProxy" */,
+				36F44FDB2BA6035500A6075C /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = 3666B64129708D04009C9A30 /* Products */;
 			projectDirPath = "";
@@ -405,6 +409,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		36F44FDB2BA6035500A6075C /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
+			requirement = {
+				kind = exactVersion;
+				version = 0.1.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -412,6 +424,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 3697E482297545C200EE042B /* XCRemoteSwiftPackageReference "ScrollViewProxy" */;
 			productName = ScrollViewProxy;
+		};
+		36F44FDC2BA6035500A6075C /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 36F44FDB2BA6035500A6075C /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
