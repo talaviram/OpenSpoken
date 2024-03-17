@@ -13,7 +13,6 @@
 		3666B65629708D89009C9A30 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3666B65229708D89009C9A30 /* ContentView.swift */; };
 		3666B65729708D89009C9A30 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3666B65329708D89009C9A30 /* Settings.swift */; };
 		3666B65929708D89009C9A30 /* SpeechCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3666B65529708D89009C9A30 /* SpeechCore.swift */; };
-		3666B65C29719CA8009C9A30 /* ProgressView_Polyfill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3666B65B29719CA8009C9A30 /* ProgressView_Polyfill.swift */; };
 		3666B6782971A103009C9A30 /* MyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3666B6772971A103009C9A30 /* MyApp.swift */; };
 		3697E484297545C200EE042B /* ScrollViewProxy in Frameworks */ = {isa = PBXBuildFile; productRef = 3697E483297545C200EE042B /* ScrollViewProxy */; };
 		36F44FDD2BA6035500A6075C /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 36F44FDC2BA6035500A6075C /* Introspect */; };
@@ -28,7 +27,6 @@
 		3666B65329708D89009C9A30 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = OpenSpokenPlayground.swiftpm/Settings.swift; sourceTree = SOURCE_ROOT; };
 		3666B65529708D89009C9A30 /* SpeechCore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpeechCore.swift; path = OpenSpokenPlayground.swiftpm/SpeechCore.swift; sourceTree = SOURCE_ROOT; };
 		3666B65A29708E81009C9A30 /* OpenSpoken.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OpenSpoken.entitlements; sourceTree = "<group>"; };
-		3666B65B29719CA8009C9A30 /* ProgressView_Polyfill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProgressView_Polyfill.swift; path = OpenSpokenPlayground.swiftpm/ProgressView_Polyfill.swift; sourceTree = SOURCE_ROOT; };
 		3666B6772971A103009C9A30 /* MyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -69,7 +67,6 @@
 				3666B65229708D89009C9A30 /* ContentView.swift */,
 				3666B65329708D89009C9A30 /* Settings.swift */,
 				3666B65529708D89009C9A30 /* SpeechCore.swift */,
-				3666B65B29719CA8009C9A30 /* ProgressView_Polyfill.swift */,
 				3666B64729708D06009C9A30 /* Assets.xcassets */,
 				3666B64929708D06009C9A30 /* Preview Content */,
 				361F24EE2972AE710053B039 /* Launch Screen.storyboard */,
@@ -167,7 +164,6 @@
 			files = (
 				3666B65929708D89009C9A30 /* SpeechCore.swift in Sources */,
 				3666B65729708D89009C9A30 /* Settings.swift in Sources */,
-				3666B65C29719CA8009C9A30 /* ProgressView_Polyfill.swift in Sources */,
 				3666B65629708D89009C9A30 /* ContentView.swift in Sources */,
 				3666B6782971A103009C9A30 /* MyApp.swift in Sources */,
 			);
@@ -228,7 +224,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -285,7 +281,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = NO;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -313,7 +309,6 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "OpenSpoken uses microphone input to transcribe and visualize audio as text.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "OpenSpoken uses built-in speech recognition to transcribe audio.";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -354,7 +349,6 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "OpenSpoken uses microphone input to transcribe and visualize audio as text.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "OpenSpoken uses built-in speech recognition to transcribe audio.";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

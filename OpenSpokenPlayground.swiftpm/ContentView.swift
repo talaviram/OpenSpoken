@@ -43,11 +43,7 @@ struct ContentView: View {
                         })
                         .padding()
                         Spacer()
-                        if #available(iOS 14.0, *) {
-                            ProgressView()
-                        } else {
-                            ProgressViewPolyfill()
-                        }
+                        ProgressView()
                     }
                 } else {
                     Button(action: { transcriber.restart() }, label: {
