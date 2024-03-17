@@ -37,40 +37,42 @@ struct ContentView: View {
       HStack {
         FontToolbar().padding()
         Spacer()
-        if transcriber.isRunning {
-          HStack {
+        Group {
+          if transcriber.isRunning {
+            HStack {
+              Button(
+                action: { transcriber.restart() },
+                label: {
+                  Image(systemName: "clear.fill").foregroundColor(.yellow)
+                }
+              )
+              .padding()
+              Button(
+                action: { transcriber.tryStop() },
+                label: {
+                  Image(systemName: "stop.fill").foregroundColor(.red)
+                }
+              )
+              .padding()
+              Spacer()
+              ProgressView()
+            }
+          } else {
             Button(
               action: { transcriber.restart() },
               label: {
-                Image(systemName: "clear.fill").foregroundColor(.yellow)
+                Image(systemName: "mic.fill")
               }
-            )
-            .padding()
-            Button(
-              action: { transcriber.tryStop() },
-              label: {
-                Image(systemName: "stop.fill").foregroundColor(.red)
-              }
-            )
-            .padding()
-            Spacer()
-            ProgressView()
+            ).disabled(transcriber.error != nil)
+              .padding()
           }
-        } else {
-          Button(
-            action: { transcriber.restart() },
-            label: {
-              Image(systemName: "mic.fill")
-            }
-          ).disabled(transcriber.error != nil)
-            .padding()
+          Spacer()
+          LanguageMenu(notifyLanguageChanged: {
+            if !self.transcriber.isRunning { return }
+            self.transcriber.restart()
+          }).padding()
         }
-        Spacer()
-        LanguageMenu(notifyLanguageChanged: {
-          if !self.transcriber.isRunning { return }
-          self.transcriber.restart()
-        }).padding()
-      }
+      }.disabled(!transcriber.isAvailable)
     }
   }
 }

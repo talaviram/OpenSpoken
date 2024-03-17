@@ -21,6 +21,7 @@ public class SpeechCore: ObservableObject {
   private let audioEngine = AVAudioEngine()
 
   @Published var isRunning = false
+  @Published var isAvailable = false
   @Published var error: String?
 
   @Published var transcribedText = "Tap the start below to begin"
@@ -51,7 +52,7 @@ public class SpeechCore: ObservableObject {
     }
     delegate.onSpeechChange = {
       available in
-      self.isRunning = available
+      self.isAvailable = available
     }
     speechRecognizer.delegate = delegate
   }
