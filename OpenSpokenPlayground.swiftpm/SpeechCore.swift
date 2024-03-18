@@ -37,7 +37,7 @@ public class SpeechCore: ObservableObject {
         case .authorized:
           self.error = nil
         case .denied:
-          self.error = "User denied access to speech recognition"
+          self.error = "Denied access to speech recognition"
 
         case .restricted:
           self.error = "Speech recognition restricted on this device"

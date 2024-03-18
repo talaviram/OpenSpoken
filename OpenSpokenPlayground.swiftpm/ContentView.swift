@@ -31,8 +31,13 @@ struct ContentView: View {
               })
         }
       }
-      Text(transcriber.error ?? "").font(.system(size: 25)).foregroundColor(.red)
-        .fixedSize(horizontal: false, vertical: true)
+      if let errorText = transcriber.error {
+        Text(errorText).font(.system(size: 25)).foregroundColor(Color.black)
+          .padding()
+          .fixedSize(horizontal: false, vertical: true)
+          .background(Color.red.opacity(0.9))
+          .clipShape(RoundedRectangle(cornerSize: CGSize(width: 20, height: 10)))
+      }
       Spacer()
       HStack {
         FontToolbar().padding()
