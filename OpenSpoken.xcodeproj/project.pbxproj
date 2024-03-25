@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		361F24EF2972AE710053B039 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 361F24EE2972AE710053B039 /* Launch Screen.storyboard */; };
+		36592DBC2BB210AB00907287 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 36592DBB2BB210AB00907287 /* PrivacyInfo.xcprivacy */; };
 		3666B64829708D06009C9A30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3666B64729708D06009C9A30 /* Assets.xcassets */; };
 		3666B64B29708D06009C9A30 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3666B64A29708D06009C9A30 /* Preview Assets.xcassets */; };
 		3666B65629708D89009C9A30 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3666B65229708D89009C9A30 /* ContentView.swift */; };
@@ -18,8 +19,22 @@
 		36F44FDD2BA6035500A6075C /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 36F44FDC2BA6035500A6075C /* Introspect */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		369FF4C32BA81B4100499F20 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		361F24EE2972AE710053B039 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		36592DBB2BB210AB00907287 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = OpenSpokenPlayground.swiftpm/PrivacyInfo.xcprivacy; sourceTree = SOURCE_ROOT; };
 		3666B64029708D04009C9A30 /* OpenSpoken.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenSpoken.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3666B64729708D06009C9A30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3666B64A29708D06009C9A30 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -62,6 +77,7 @@
 		3666B64229708D04009C9A30 /* OpenSpoken */ = {
 			isa = PBXGroup;
 			children = (
+				36592DBB2BB210AB00907287 /* PrivacyInfo.xcprivacy */,
 				3666B65A29708E81009C9A30 /* OpenSpoken.entitlements */,
 				3666B6772971A103009C9A30 /* MyApp.swift */,
 				3666B65229708D89009C9A30 /* ContentView.swift */,
@@ -92,6 +108,7 @@
 				3666B63C29708D04009C9A30 /* Sources */,
 				3666B63D29708D04009C9A30 /* Frameworks */,
 				3666B63E29708D04009C9A30 /* Resources */,
+				369FF4C32BA81B4100499F20 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
@@ -113,7 +130,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1340;
+				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
 					3666B63F29708D04009C9A30 = {
@@ -151,6 +168,7 @@
 			files = (
 				361F24EF2972AE710053B039 /* Launch Screen.storyboard in Resources */,
 				3666B64B29708D06009C9A30 /* Preview Assets.xcassets in Resources */,
+				36592DBC2BB210AB00907287 /* PrivacyInfo.xcprivacy in Resources */,
 				3666B64829708D06009C9A30 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
