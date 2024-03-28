@@ -24,7 +24,7 @@ The app should support many languages (as long as they're available within Apple
 
 # Requirements
 
-- iOS/iPadOS 13 or newer.
+- iOS/iPadOS ~~13~~ 14 or newer. (earlier buids 1.0.0-1.0.1 supported iOS 13)
 - macOS 11 (Big Sur) or newer. (native Apple silicon and Intel support)
 
 <img src="https://raw.githubusercontent.com/talaviram/OpenSpoken/main/Media/screenshot_macOS.jpg" alt="Open Spoken Screenshot on macOS" />
