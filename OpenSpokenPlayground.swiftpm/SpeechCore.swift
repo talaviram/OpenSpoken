@@ -77,12 +77,7 @@ public class SpeechCore: ObservableObject {
     guard let recognitionRequest = recognitionRequest else {
       fatalError("Unable to create a SFSpeechAudioBufferRecognitionRequest object")
     }
-    recognitionRequest.shouldReportPartialResults = true
-    //        recognitionRequest.taskHint = .dictation
-
-    if #available(iOS 13, *) {
-      recognitionRequest.requiresOnDeviceRecognition = self.settings.offlineTranscribe
-    }
+    recognitionRequest.requiresOnDeviceRecognition = self.settings.offlineTranscribe
 
     // Create a recognition task for the speech recognition session.
     // Keep a reference to the task so that it can be canceled.
