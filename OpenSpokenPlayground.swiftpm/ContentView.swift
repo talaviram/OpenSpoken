@@ -46,6 +46,13 @@ struct ContentView: View {
           if transcriber.isRunning {
             HStack {
               Button(
+                action: { UIPasteboard.general.string = transcriber.transcribedText },
+                label: {
+                  Image(systemName: "document.on.document.fill")
+                }
+              )
+              .padding()
+              Button(
                 action: { transcriber.restart() },
                 label: {
                   Image(systemName: "clear.fill").foregroundColor(.yellow)
