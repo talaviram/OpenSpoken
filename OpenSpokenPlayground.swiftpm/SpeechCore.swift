@@ -1,19 +1,8 @@
-import Speech
+@preconcurrency import Speech
 import SwiftUI
 
-// ugly workaround for a delegate without fancy ViewController
-class SpeechChangeDelegate: NSObject, UISceneDelegate, SFSpeechRecognizerDelegate {
-  var onSpeechChange: ((_ available: Bool) -> Void)?
-  public func speechRecognizer(
-    _ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool
-  ) {
-    onSpeechChange?(available)
-  }
-}
-
-public class SpeechCore: ObservableObject {
+@MainActor public class SpeechCore: ObservableObject {
   @ObservedObject var settings = Settings.instance
-  let delegate = SpeechChangeDelegate()
 
   private var speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "he-IL"))!
   private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
@@ -28,14 +17,16 @@ public class SpeechCore: ObservableObject {
 
   init() {
     // Asynchronously make the authorization request.
-    SFSpeechRecognizer.requestAuthorization { authStatus in
+    SFSpeechRecognizer.requestAuthorization { @Sendable authStatus in
 
       // Divert to the app's main thread so that the UI
       // can be updated.
-      OperationQueue.main.addOperation {
+      Task { @MainActor in
+        self.isAvailable = false
         switch authStatus {
         case .authorized:
           self.error = nil
+          self.isAvailable = true
         case .denied:
           self.error = "Denied access to speech recognition"
 
@@ -50,11 +41,6 @@ public class SpeechCore: ObservableObject {
         }
       }
     }
-    delegate.onSpeechChange = {
-      available in
-      self.isAvailable = available
-    }
-    speechRecognizer.delegate = delegate
   }
 
   private func tryToStart() throws {
@@ -74,43 +60,50 @@ public class SpeechCore: ObservableObject {
 
     // Create and configure the speech recognition request.
     recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
-    guard let recognitionRequest = recognitionRequest else {
-      fatalError("Unable to create a SFSpeechAudioBufferRecognitionRequest object")
+    recognitionRequest?.requiresOnDeviceRecognition = self.settings.offlineTranscribe
+
+    guard let request = recognitionRequest else {
+      return
     }
-    recognitionRequest.requiresOnDeviceRecognition = self.settings.offlineTranscribe
 
     // Create a recognition task for the speech recognition session.
     // Keep a reference to the task so that it can be canceled.
-    recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) { result, error in
+    recognitionTask = speechRecognizer.recognitionTask(with: request) { result, error in
       var isFinal = false
 
       guard let result = result else { return }
       // Update the text view with the results.
-      self.transcribedText = result.bestTranscription.formattedString
+      let best = result.bestTranscription.formattedString
       isFinal = result.isFinal
-      #if DEBUG
-        print(self.transcribedText)
-      #endif
+      Task { @MainActor in
+        self.transcribedText = best
+        #if DEBUG
+          print(self.transcribedText)
+        #endif
+      }
 
-      if error != nil {
-        // Stop recognizing speech if there is a problem.
-        self.audioEngine.stop()
-        inputNode.removeTap(onBus: 0)
+      if let error = error {
+        Task { @MainActor in
+          // Stop recognizing speech if there is a problem.
+          self.audioEngine.stop()
+          inputNode.removeTap(onBus: 0)
 
-        self.recognitionRequest = nil
-        self.recognitionTask = nil
+          self.recognitionRequest = nil
+          self.recognitionTask = nil
 
-        self.isRunning = false
-        self.error =
-          "Recognition stopped due to a problem \(error.debugDescription) isFinal: \(isFinal)"
+          self.isRunning = false
+          self.error =
+            "Recognition stopped due to a problem \(error.localizedDescription) isFinal: \(isFinal)"
+        }
       }
     }
 
     // Configure the microphone input.
     let recordingFormat = inputNode.outputFormat(forBus: 0)
+    let recognitionRequest = self.recognitionRequest
     inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) {
-      (buffer: AVAudioPCMBuffer, _: AVAudioTime) in
-      self.recognitionRequest?.append(buffer)
+      @Sendable [recognitionRequest] buffer, _ in
+      recognitionRequest?.append(buffer)
     }
 
     audioEngine.prepare()
