@@ -17,8 +17,8 @@
 I've made this app since due to personal need of a family member with hearing problems.
 It simply gets the audio from the microphone and transcribes it to text using [Apple's Speech Recognition framework](https://developer.apple.com/documentation/speech/sfspeechrecognizer).
 
-Dedicated to beloved Cerna,
-16 October 1926 - 25 March 2023
+Dedicated to our beloved Cerna,
+October 16th 1926 - March 25th 2023
 
 The app should support many languages (as long as they're available within Apple's Speech Recognition).
 
